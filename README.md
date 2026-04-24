@@ -37,9 +37,9 @@ MFCC shows good separation but fails to align with labels.
 ├── plots/
 ├── results/
 ├── scripts/
-│ ├── easy_tasks/
-│ ├── medium_tasks/
-│ └── hard_tasks/
+│ ├── easy\_tasks/
+│ ├── medium\_tasks/
+│ └── hard\_tasks/
 ├── requirements.txt
 └── README.md
 
@@ -77,4 +77,15 @@ python scripts/hard_tasks/3.clustering_and_matrics.py
 python scripts/hard_tasks/4.visualisation.py
 
 
+## 📈 Visualizations
 
+The project includes several visualization outputs:
+
+t-SNE and UMAP projections of latent space
+Language distribution across clusters
+Genre distribution across clusters
+Example Plots
+plots/hard_tasks_tsne_clusters.png
+plots/hard_tasks_umap_clusters.png
+plots/language_distribution.png
+plots/genre_distribution.png
