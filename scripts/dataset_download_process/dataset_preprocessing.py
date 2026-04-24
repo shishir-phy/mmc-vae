@@ -1,7 +1,12 @@
+import os
 import pandas as pd
+import matplotlib.pyplot as plt
 
-bn = pd.read_csv("subset_bn_top_300.csv")
-en = pd.read_csv("subset_en_top_300.csv")
+# Create the directory
+os.makedirs('plots', exist_ok=True)
+
+bn = pd.read_csv("datasets/subset_bn_top_300.csv")
+en = pd.read_csv("datasets/subset_en_top_300.csv")
 
 ## Inspect both subset
 print(bn.head())
@@ -66,7 +71,7 @@ print(df.isnull().sum())
 
 
 ## Save final dataset
-df.to_csv("final_music_dataset.csv", index=False)
+df.to_csv("datasets/final_music_dataset.csv", index=False)
 
 ## Dataset plot
 #df["language"].value_counts().plot(kind="bar")

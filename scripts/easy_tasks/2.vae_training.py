@@ -1,11 +1,13 @@
+import os
 import torch
 import numpy as np
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
+from VAE import VAE
 
 
 ## Load dataset
-X = np.load("X_features.npy")   # or X_reduced.npy
+X = np.load("features/X_features.npy")   # or X_reduced.npy
 X_tensor = torch.tensor(X, dtype=torch.float32)
 
 dataset = TensorDataset(X_tensor)
@@ -66,6 +68,6 @@ with torch.no_grad():
 
 Z = np.vstack(latent_vectors)
 
-
+os.makedirs('features', exist_ok=True)
 ## Save Latent vectors 
 np.save("features/latent_vectors.npy", Z)

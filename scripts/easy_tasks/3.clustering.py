@@ -24,12 +24,12 @@ kmeans = KMeans(n_clusters=k, random_state=42)
 labels_kmeans = kmeans.fit_predict(Z)
 
 ## Cluster insight
-df["cluster"] = labels_kmeans
-print(df.groupby(["cluster", "language"]).size())
+#df["cluster"] = labels_kmeans
+#print(df.groupby(["cluster", "language"]).size())
 
-for c in df["cluster"].unique():
-    subset = df[df["cluster"] == c]
-    counts = subset["language"].value_counts(normalize=True)
-    print(f"Cluster {c}:\n{counts}\n")
+#for c in df["cluster"].unique():
+#    subset = df[df["cluster"] == c]
+#    counts = subset["language"].value_counts(normalize=True)
+#    print(f"Cluster {c}:\n{counts}\n")
 
-
+np.save("features/labels_kmeans.npy", labels_kmeans)

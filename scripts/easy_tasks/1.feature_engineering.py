@@ -1,4 +1,5 @@
 ## Clean and Normalize text
+import os
 import re
 import numpy as np
 import pandas as pd
@@ -14,6 +15,10 @@ def clean_text(text):
     text = re.sub(r'[^a-zA-Z\u0980-\u09FF\s]', '', text)
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
+
+
+df = pd.read_csv("datasets/final_music_dataset.csv")
+
 
 df["lyrics"] = df["lyrics"].apply(clean_text)
 
@@ -62,7 +67,8 @@ X_scaled = scaler.fit_transform(X)
 pca = PCA(n_components=128)
 X_reduced = pca.fit_transform(X_scaled)
 
+os.makedirs('features', exist_ok=True)
 ## Save feature matrix
-np.save("features/X_features.npy", X_scaled)
+np.save("features/X_features.npy", X_reduced)
 
 

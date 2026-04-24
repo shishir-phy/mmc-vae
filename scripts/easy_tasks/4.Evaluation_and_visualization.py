@@ -1,10 +1,16 @@
 import pandas as pd
+import numpy as np
 from sklearn.metrics import silhouette_score
 from sklearn.metrics import calinski_harabasz_score
 from sklearn.metrics import davies_bouldin_score
 from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
 
+Z = np.load("features/latent_vectors.npy")  
+X = np.load("features/X_features.npy")   
+labels_kmeans = np.load("features/labels_kmeans.npy")
 
+k=3
 ## Silhouette Score
 sil_kmeans = silhouette_score(Z, labels_kmeans)
 
@@ -40,7 +46,7 @@ print(results)
 
 
 ####### Visualization ############
-
+print("Generating t-SNE plot")
 ### t-SNE
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
@@ -53,10 +59,11 @@ plt.scatter(Z_2d[:,0], Z_2d[:,1], c=labels_kmeans)
 #plt.scatter(Z_2d[:,0], Z_2d[:,1], c=df["language"].map({"English":0,"Bangla":1}))
 plt.title("VAE Latent Space Clustering")
 plt.savefig("plots/easy_tasks_tSNE_plot.png")
-plt.show()
+plt.close()
 
 
 
+print("Generating UMAP plot")
 ## UMAP
 import umap
 
@@ -66,6 +73,6 @@ Z_umap = reducer.fit_transform(Z)
 plt.scatter(Z_umap[:,0], Z_umap[:,1], c=labels_kmeans)
 plt.title("UMAP Clusters")
 plt.savefig("plots/easy_tasks_UMAP_plot.png")
-plt.show()
+plt.close()
 
 
