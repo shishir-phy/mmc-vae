@@ -31,7 +31,7 @@ MFCC shows good separation but fails to align with labels.
 ---
 
 ## 🧠 Project Structure
-.
+.  
 ├── datasets/  
 ├── features/  
 ├── plots/  
