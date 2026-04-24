@@ -1,5 +1,7 @@
+gdown
 pandas
 numpy
 matplotlib
 sentence-transformers
-
+umap-learn
+yt-dlp

@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.metrics import silhouette_score
@@ -44,6 +45,8 @@ results = pd.DataFrame({
 
 print(results)
 
+os.makedirs('results', exist_ok=True)
+results.to_csv("results/easy_results.csv", index=False)
 
 ####### Visualization ############
 print("Generating t-SNE plot")
@@ -59,6 +62,7 @@ plt.scatter(Z_2d[:,0], Z_2d[:,1], c=labels_kmeans)
 #plt.scatter(Z_2d[:,0], Z_2d[:,1], c=df["language"].map({"English":0,"Bangla":1}))
 plt.title("VAE Latent Space Clustering")
 plt.savefig("plots/easy_tasks_tSNE_plot.png")
+print("Plot Generated: plots/easy_tasks_tSNE_plot.png")
 plt.close()
 
 
@@ -73,6 +77,7 @@ Z_umap = reducer.fit_transform(Z)
 plt.scatter(Z_umap[:,0], Z_umap[:,1], c=labels_kmeans)
 plt.title("UMAP Clusters")
 plt.savefig("plots/easy_tasks_UMAP_plot.png")
+print("Plot Generated: plots/easy_tasks_UMAP_plot.png")
 plt.close()
 
 
